@@ -18,5 +18,11 @@ echo.
 echo [33m change back EventLog-System to 1 to keep working enable/disable Ethernet(lan) adapter [0m
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System" /v "Start" /t REG_DWORD /d "1" /f
 echo.
+:: needs to test
+:: echo [33m another workaround to fix Ethernet(lan) adapter (remove EventLog from DependOnService) [0m
+:: reg add "HKLM\SYSTEM\CurrentControlSet\Services\NlaSvc" /v "DependOnService" /t REG_MULTI_SZ /d "NSI\0RpcSs\0TcpIp\0Dhcp" /f
+:: default value:
+:: reg add "HKLM\SYSTEM\CurrentControlSet\Services\NlaSvc" /v "DependOnService" /t REG_MULTI_SZ /d "NSI\0RpcSs\0TcpIp\0Dhcp\0EventLog" /f
+:: echo.
 pause
 exit
